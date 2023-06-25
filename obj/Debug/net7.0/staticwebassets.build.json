@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "f1pGw7NZ+FMlWKUNFnh3VcG0UNKVwtFEOFZPORgL5yM=",
+  "Hash": "pNZ3xydjfqluveI6zM7o0kAo2g5wl/B2x5aRrKwPT+I=",
   "Source": "TaskTracker",
   "BasePath": "_content/TaskTracker",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TaskTracker\\wwwroot",
+      "Source": "TaskTracker",
+      "ContentRoot": "C:\\Users\\Surface\\Documents\\Projects\\TaskTracker\\TaskTracker\\TaskTracker\\wwwroot\\",
+      "BasePath": "_content/TaskTracker",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

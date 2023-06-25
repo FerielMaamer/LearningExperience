@@ -1,5 +1,6 @@
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\appsettings.json
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\TaskTracker.staticwebassets.runtime.json
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\TaskTracker.exe
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\TaskTracker.deps.json
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\TaskTracker.runtimeconfig.json

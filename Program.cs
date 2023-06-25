@@ -5,22 +5,20 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskTracker.Data;
 using TaskTracker.Models;
-using Task = TaskTracker.Models.Task;
 
 class Program
 {
     static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        var connectionString = builder.Configuration.GetConnectionString("Tasks") ?? "Data Source=taskmanager.db";
 
         // Add services to the container.
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-
-        // Create the database and perform operations
-        CreateDatabase(builder.Services);
+        builder.Services.AddDbContext<TaskDbContext>(options => options.UseSqlite(connectionString));
 
         var app = builder.Build();
 
@@ -37,53 +35,17 @@ class Program
 
         app.MapControllers();
 
+        var tasks = app.MapGroup("/api/students");
+
+        /*app.MapGet("/", TaskAPIs.GetAllStudents);
+        app.MapGet("/school/{school}", TaskAPIs.GeStudentsBySchool);
+        app.MapGet("/{id}", TaskAPIs.GetStudentById);
+        app.MapPost("/", TaskAPIs.InsertStudent);
+        app.MapPut("/{id}", TaskAPIs.UpdateStudent);
+        app.MapDelete("/{id}", TaskAPIs.DeleteStudent);*/
+
         app.Run();
+
     }
-
-    static void CreateDatabase(IServiceCollection services)
-    {
-        // Connection string for SQLite in-memory database
-        string connectionString = "Data Source=:memory:;Version=3;New=True;";
-
-        // Register the DbContext using the SQLite connection string
-        services.AddDbContext<TaskDbContext>(options =>
-            options.UseSqlite(connectionString));
-
-        // Build the service provider to resolve the DbContext
-        using (var serviceProvider = services.BuildServiceProvider())
-        {
-            // Resolve the DbContext
-            using (var scope = serviceProvider.CreateScope())
-            {
-                var dbContext = scope.ServiceProvider.GetRequiredService<TaskDbContext>();
-
-                // Ensure the database is created
-                dbContext.Database.EnsureCreated();
-
-                // Perform database operations
-                // For example, add a new task
-                /*var task = new OneTask
-                {
-                    Title = "Sample Task",
-                    Description = "This is a sample task",
-                    IsCompleted = false
-                };
-                dbContext.Tasks.Add(task);
-                dbContext.SaveChanges();
-
-                // Retrieve tasks from the database
-                var tasks = dbContext.Tasks.ToList();
-                foreach (var t in tasks)
-                {
-                    Console.WriteLine($"Task ID: {t.Id}");
-                    Console.WriteLine($"Title: {t.Title}");
-                    Console.WriteLine($"Description: {t.Description}");
-                    Console.WriteLine($"IsCompleted: {t.IsCompleted}");
-                    Console.WriteLine();
-                }*/
-            }
-        }
-
-        Console.WriteLine("Task Manager database created successfully.");
-    }
+    
 }
