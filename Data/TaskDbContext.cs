@@ -18,9 +18,11 @@ namespace TaskTracker.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<IndividualTask>().HasNoKey();
+            //modelBuilder.Entity<IndividualTask>().HasNoKey();
+            modelBuilder.Entity<IndividualTask>();
+
         }
-        
+
 
     }
 }

@@ -19,12 +19,7 @@ namespace TaskTracker.Controllers
 
         // GET: api/tasks
         [HttpGet]
-        /*public async Task<ActionResult<IEnumerable<IndividualTask>>> GetTasks()
-        {
-            var tasks = await _context.TasksGroup.ToListAsync();
-            return Ok(tasks);
-        }*/
-
+        
         public async Task<ActionResult<IEnumerable<IndividualTask>>> GetTasks()
         {
             var tasks = await _context.TasksGroup.ToListAsync();
@@ -52,7 +47,7 @@ namespace TaskTracker.Controllers
         {
             _context.TasksGroup.Add(task);
             await _context.SaveChangesAsync();
-
+            Console.WriteLine(task);
             return CreatedAtAction(nameof(GetTask), new { id = task.Id }, task);
         }
 

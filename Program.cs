@@ -3,6 +3,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TaskTracker.Controllers;
 using TaskTracker.Data;
 using TaskTracker.Models;
 
@@ -35,9 +36,9 @@ class Program
 
         app.MapControllers();
 
-        var tasks = app.MapGroup("/api/students");
+        var tasks = app.MapGroup("/api/tasks");
 
-        /*app.MapGet("/", TaskAPIs.GetAllStudents);
+        /*app.MapGet("/", TaskController.GetTasks);
         app.MapGet("/school/{school}", TaskAPIs.GeStudentsBySchool);
         app.MapGet("/{id}", TaskAPIs.GetStudentById);
         app.MapPost("/", TaskAPIs.InsertStudent);
