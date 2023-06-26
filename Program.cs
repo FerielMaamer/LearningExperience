@@ -17,7 +17,7 @@ class Program
 
         builder.Services.AddCors(options =>
         {
-            options.AddPolicy(name: "MyPolicy",
+            options.AddPolicy(name: "MyAllowSpecificOrigins",
                         policy =>
                         {
                             policy.WithOrigins("https://localhost:8080")
@@ -54,5 +54,5 @@ class Program
         app.Run();
 
     }
-    
+
 }

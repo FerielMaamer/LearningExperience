@@ -68,3 +68,6 @@ C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\obj\Debu
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\obj\Debug\net7.0\TaskTracker.pdb
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\obj\Debug\net7.0\TaskTracker.genruntimeconfig.cache
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\obj\Debug\net7.0\ref\TaskTracker.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.Hosting.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
