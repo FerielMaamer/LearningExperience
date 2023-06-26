@@ -11,8 +11,22 @@ class Program
 {
     static void Main(string[] args)
     {
+        var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         var builder = WebApplication.CreateBuilder(args);
         var connectionString = builder.Configuration.GetConnectionString("Tasks") ?? "Data Source=taskmanager.db";
+
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(name: "MyPolicy",
+                        policy =>
+                        {
+                            policy.WithOrigins("https://localhost:8080")
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod()
+                                    .WithMethods("PUT", "DELETE", "GET", "POST");
+                        });
+        });
+
 
         // Add services to the container.
         builder.Services.AddControllers();
@@ -35,15 +49,7 @@ class Program
         app.UseAuthorization();
 
         app.MapControllers();
-
-        var tasks = app.MapGroup("/api/tasks");
-
-        /*app.MapGet("/", TaskController.GetTasks);
-        app.MapGet("/school/{school}", TaskAPIs.GeStudentsBySchool);
-        app.MapGet("/{id}", TaskAPIs.GetStudentById);
-        app.MapPost("/", TaskAPIs.InsertStudent);
-        app.MapPut("/{id}", TaskAPIs.UpdateStudent);
-        app.MapDelete("/{id}", TaskAPIs.DeleteStudent);*/
+        app.UseCors(MyAllowSpecificOrigins);
 
         app.Run();
 

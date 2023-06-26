@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskTracker.Data;
 using TaskTracker.Models;
 
 namespace TaskTracker.Controllers
 {
-
     [Route("api/tasks")]
     [ApiController]
     public class TaskController : ControllerBase
@@ -42,6 +42,7 @@ namespace TaskTracker.Controllers
         }
 
         // POST: api/tasks
+        
         [HttpPost]
         public async Task<ActionResult<IndividualTask>> CreateTask(IndividualTask task)
         {
