@@ -7,6 +7,9 @@ C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debu
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\TaskTracker.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\TaskTracker.pdb
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Humanizer.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\System.Net.Http.Formatting.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\System.Web.Http.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\System.Web.Http.SelfHost.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Data.Sqlite.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
@@ -14,9 +17,14 @@ C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debu
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.Hosting.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.OpenApi.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\SQLitePCLRaw.batteries_v2.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\SQLitePCLRaw.core.dll
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -68,6 +76,3 @@ C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\obj\Debu
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\obj\Debug\net7.0\TaskTracker.pdb
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\obj\Debug\net7.0\TaskTracker.genruntimeconfig.cache
 C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\obj\Debug\net7.0\ref\TaskTracker.dll
-C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
-C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.Hosting.dll
-C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

@@ -1,11 +1,5 @@
-using System;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using TaskTracker.Controllers;
 using TaskTracker.Data;
-using TaskTracker.Models;
 
 class Program
 {
@@ -13,7 +7,7 @@ class Program
     {
         var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         var builder = WebApplication.CreateBuilder(args);
-        var connectionString = builder.Configuration.GetConnectionString("Tasks") ?? "Data Source=taskmanager.db";
+        var connectionString = builder.Configuration.GetConnectionString("Tasks") ?? "Data Source=./taskmanager.db";
 
         builder.Services.AddCors(options =>
         {
@@ -50,7 +44,12 @@ class Program
 
         app.MapControllers();
         app.UseCors(MyAllowSpecificOrigins);
+        app.UseCors(options => {
+            options.AllowAnyOrigin();
+            options.AllowAnyMethod();
+            options.AllowAnyHeader();
 
+        });
         app.Run();
 
     }

@@ -13,7 +13,7 @@ namespace TaskTracker.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source = C:\Users\Surface\Documents\Projects\TaskTracker\TaskTracker\TaskTracker\taskmanager.db");
+            optionsBuilder.UseSqlite(@"Data Source = ./taskmanager.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
