@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TaskTracker.Data;
 using TaskTracker.Models;
 
 namespace TaskTracker.Controllers
@@ -49,14 +48,14 @@ namespace TaskTracker.Controllers
             _context.TasksGroup.Add(task);
             await _context.SaveChangesAsync();
             Console.WriteLine(task);
-            return CreatedAtAction(nameof(GetTask), new { id = task.Id }, task);
+            return CreatedAtAction(nameof(GetTask), new { id = task.TaskId}, task);
         }
 
         // PUT: api/tasks/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(int id, IndividualTask task)
         {
-            if (id != task.Id)
+            if (id != task.TaskId)
             {
                 return BadRequest();
             }
@@ -100,7 +99,7 @@ namespace TaskTracker.Controllers
 
         private bool TaskExists(int id)
         {
-            return _context.TasksGroup.Any(e => e.Id == id);
+            return _context.TasksGroup.Any(e => e.TaskId == id);
         }
     }
 }

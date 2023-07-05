@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TaskTracker.Data;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Microsoft.Extensions.Configuration;
+using TaskTracker.Models;
 
 class Program
 {
@@ -7,8 +9,9 @@ class Program
     {
         var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         var builder = WebApplication.CreateBuilder(args);
-        var connectionString = builder.Configuration.GetConnectionString("Tasks") ?? "Data Source=./taskmanager.db";
+        string connectionStrings = "Host=maroon-zebu-4369.g8z.cockroachlabs.cloud;Port=26257;Database=defaultdb;Username=ferielmaamer;Password=_lVrK56Y5uUlfJlhwJMg-A;SslMode=VerifyFull";
 
+        //might need to remove the below in the future
         builder.Services.AddCors(options =>
         {
             options.AddPolicy(name: "MyAllowSpecificOrigins",
@@ -27,7 +30,7 @@ class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        builder.Services.AddDbContext<TaskDbContext>(options => options.UseSqlite(connectionString));
+        builder.Services.AddDbContext<TaskDbContext>(options => options.UseNpgsql(connectionStrings));
 
         var app = builder.Build();
 
