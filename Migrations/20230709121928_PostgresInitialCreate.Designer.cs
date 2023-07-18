@@ -12,7 +12,7 @@ using TaskTracker.Models;
 namespace TaskTracker.Migrations
 {
     [DbContext(typeof(TaskDbContext))]
-    [Migration("20230705144309_PostgresInitialCreate")]
+    [Migration("20230709121928_PostgresInitialCreate")]
     partial class PostgresInitialCreate
     {
         /// <inheritdoc />

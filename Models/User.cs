@@ -25,8 +25,8 @@ namespace TaskTracker.Models
 
         public int UserRole { get; set; }
 
-        [InverseProperty("User")]
-        public ICollection<IndividualTask>? Tasks { get; set; }
+        //[InverseProperty(nameof(IndividualTask.User))]
+        public List<IndividualTask>? Tasks { get; set; }
     }
 
 }

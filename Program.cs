@@ -1,7 +1,12 @@
+global using TaskTracker.Services;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Microsoft.Extensions.Configuration;
 using TaskTracker.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using IdentityServer3.Core.Services;
 
 class Program
 {
@@ -9,7 +14,7 @@ class Program
     {
         var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         var builder = WebApplication.CreateBuilder(args);
-        string connectionStrings = "Host=maroon-zebu-4369.g8z.cockroachlabs.cloud;Port=26257;Database=defaultdb;Username=ferielmaamer;Password=_lVrK56Y5uUlfJlhwJMg-A;SslMode=VerifyFull";
+        string connectionStrings = "Host=way-stoat-4471.g8z.cockroachlabs.cloud;Port=26257;Database=defaultdb;Username=ferielmaamer_yahoo;Password=IvfVlA4rL237b8MpUdYcgw;SslMode=VerifyFull";
 
         //might need to remove the below in the future
         builder.Services.AddCors(options =>
@@ -24,11 +29,24 @@ class Program
                         });
         });
 
-
+        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+                    .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
+                ValidateIssuer = false,
+                ValidateAudience = false
+            };
+        });
         // Add services to the container.
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddScoped<IUserServices, UserService>();
         builder.Services.AddSwaggerGen();
         builder.Services.AddDbContext<TaskDbContext>(options => options.UseNpgsql(connectionStrings));
 

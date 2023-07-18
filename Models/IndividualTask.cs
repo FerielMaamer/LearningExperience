@@ -19,14 +19,17 @@ namespace TaskTracker.Models
 
         public int Frequency { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
 
-        [ForeignKey("User")]
+
         public int UserId { get; set; }
+        [ForeignKey(nameof(UserId))]
+        
         public User? User { get; set; }
 
-        [ForeignKey("Category")]
         public int CatId { get; set; }
-        public Category? Category { get; set; }
+        [ForeignKey(nameof(CatId))]
+        
+        public IndividualTask? Category { get; set; }
     }
 }

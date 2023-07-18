@@ -18,10 +18,27 @@ namespace TaskTracker.Controllers
 
         // GET: api/tasks
         [HttpGet]
-        
+
         public async Task<ActionResult<IEnumerable<IndividualTask>>> GetTasks()
         {
-            var tasks = await _context.TasksGroup.ToListAsync();
+            var tasks = await _context.IndividualTask.ToListAsync();
+            return Ok(tasks);
+
+        }
+
+
+        // GET: api/tasks/{userId}
+        [HttpGet("{userId}")]
+        
+        public async Task<ActionResult<IEnumerable<IndividualTask>>> GetTasks(int userId)
+        {
+            var tasks = await _context.IndividualTask.Where(t => t.UserId == userId).ToListAsync();
+
+            if (tasks == null)
+            {
+                return NotFound();
+            }
+
             return Ok(tasks);
 
         }
@@ -30,7 +47,7 @@ namespace TaskTracker.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IndividualTask>> GetTask(int id)
         {
-            var task = await _context.TasksGroup.FindAsync(id);
+            var task = await _context.IndividualTask.FindAsync(id);
 
             if (task == null)
             {
@@ -45,7 +62,7 @@ namespace TaskTracker.Controllers
         [HttpPost]
         public async Task<ActionResult<IndividualTask>> CreateTask(IndividualTask task)
         {
-            _context.TasksGroup.Add(task);
+            _context.IndividualTask.Add(task);
             await _context.SaveChangesAsync();
             Console.WriteLine(task);
             return CreatedAtAction(nameof(GetTask), new { id = task.TaskId}, task);
@@ -85,13 +102,13 @@ namespace TaskTracker.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
-            var task = await _context.TasksGroup.FindAsync(id);
+            var task = await _context.IndividualTask.FindAsync(id);
             if (task == null)
             {
                 return NotFound();
             }
 
-            _context.TasksGroup.Remove(task);
+            _context.IndividualTask.Remove(task);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -99,7 +116,7 @@ namespace TaskTracker.Controllers
 
         private bool TaskExists(int id)
         {
-            return _context.TasksGroup.Any(e => e.TaskId == id);
+            return _context.IndividualTask.Any(e => e.TaskId == id);
         }
     }
 }

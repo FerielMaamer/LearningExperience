@@ -11,7 +11,7 @@ namespace TaskTracker.Models
 
         public string Name { get; set; }
 
-        [InverseProperty("Category")]
-        public ICollection<IndividualTask>? Tasks { get; set; }
+        //[InverseProperty(nameof(IndividualTask.Category))]
+        public List<IndividualTask>? Tasks { get; set; }
     }
 }

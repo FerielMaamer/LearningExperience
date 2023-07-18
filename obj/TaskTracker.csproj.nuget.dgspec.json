@@ -46,9 +46,17 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "IdentityServer3": {
+              "target": "Package",
+              "version": "[2.6.3, )"
+            },
             "Microsoft.AspNet.WebApi.SelfHost": {
               "target": "Package",
               "version": "[5.2.9, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.8, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -91,6 +99,10 @@
             "System.ComponentModel.Annotations": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.31.0, )"
             }
           },
           "imports": [

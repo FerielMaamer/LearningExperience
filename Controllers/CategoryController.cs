@@ -1,74 +1,77 @@
-﻿//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using TaskTracker.Models;
 
-//namespace TaskTracker.Controllers
-//{
-//    public class CategoryController : Controller
-//    {
-//        // GET: api/Category
-//        [HttpGet]
-//        public ActionResult Index()
-//        {
-//            return View();
-//        }
+namespace TaskTracker.Controllers
+{
+    [Route("api/categories")]
+    [ApiController]
+    public class CategoryController : ControllerBase
+    {
+        private readonly TaskDbContext _context;
+
+        public CategoryController(TaskDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/categories
+        [HttpGet]
+
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        {
+            var categories = await _context.Category.ToListAsync();
+            return Ok(categories);
+
+        }
+
+
+        // GET: api/categories/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Category>> GetCategory(int id)
+        {
+            var category = await _context.Category.FindAsync(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(category);
+        }
+
+        // POST: api/categories
+
+        [HttpPost]
+        public async Task<ActionResult<Category>> CreateTask(Category category)
+        {
+            _context.Category.Add(category);
+            await _context.SaveChangesAsync();
+            Console.WriteLine(category);
+            return CreatedAtAction(nameof(GetCategory), new { id = category.CatId }, category);
+        }
 
         
 
-//        // POST: CategoryController/Create
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult Create(IFormCollection collection)
-//        {
-//            try
-//            {
-//                return RedirectToAction(nameof(Index));
-//            }
-//            catch
-//            {
-//                return View();
-//            }
-//        }
+        // DELETE: api/tasks/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var category = await _context.Category.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
 
-//        // GET: CategoryController/Edit/5
-//        public ActionResult Edit(int id)
-//        {
-//            return View();
-//        }
+            _context.Category.Remove(category);
+            await _context.SaveChangesAsync();
 
-//        // POST: CategoryController/Edit/5
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult Edit(int id, IFormCollection collection)
-//        {
-//            try
-//            {
-//                return RedirectToAction(nameof(Index));
-//            }
-//            catch
-//            {
-//                return View();
-//            }
-//        }
+            return NoContent();
+        }
 
-//        // GET: CategoryController/Delete/5
-//        public ActionResult Delete(int id)
-//        {
-//            return View();
-//        }
-
-//        // POST: CategoryController/Delete/5
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult Delete(int id, IFormCollection collection)
-//        {
-//            try
-//            {
-//                return RedirectToAction(nameof(Index));
-//            }
-//            catch
-//            {
-//                return View();
-//            }
-//        }
-//    }
-//}
+        //private bool CategoryExists(int id)
+        //{
+        //    return _context.Category.Any(e => e.CatId == id);
+        //}
+    }
+}
